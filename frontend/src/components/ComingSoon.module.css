@@ -1,0 +1,53 @@
+.wrap {
+  display: grid;
+  gap: var(--space-4);
+  max-width: var(--measure);
+}
+
+.badge {
+  justify-self: start;
+  padding: 0.2rem 0.75rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-badge-bg);
+  color: var(--color-badge-text);
+  font-size: var(--text-sm);
+  font-weight: 650;
+}
+
+.title {
+  font-size: var(--text-xl);
+}
+
+.body {
+  display: grid;
+  gap: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+.details {
+  padding: var(--space-3) var(--space-4);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+}
+
+.details summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.details ul {
+  margin: var(--space-2) 0 0;
+  padding-left: var(--space-5);
+  display: grid;
+  gap: var(--space-1);
+}
+
+.details code {
+  overflow-wrap: anywhere;
+}
+
+.back {
+  justify-self: start;
+  font-weight: 600;
+}

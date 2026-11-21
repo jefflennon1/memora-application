@@ -1,0 +1,346 @@
+/*
+ * Tokens de design da Memora.
+ *
+ * Marca, em ordem de importância:
+ *   primária   #40C3D6
+ *   secundária #36C7DD
+ *   terciária  #EC3F97 (detalhes: ponto da marca, passos, linha do tempo, seleção, foco de campo,
+ *              anel do avatar, sublinhado de links, selos "em breve", pontos do slogan, categorias)
+ *
+ * Contraste (WCAG AA) verificado para cada par texto/fundo usado:
+ *   - Branco sobre #40C3D6 dá só 2,1:1 → botões primários usam texto --color-on-primary (#08353D, 6,3:1).
+ *   - Branco sobre #EC3F97 dá 3,7:1 → texto sobre o rosa usa #1F0A15 (5,2:1).
+ *   - Rosa como borda sobre branco dá 3,7:1 (≥ 3:1 para componentes); nos demais usos é preenchimento
+ *     ou detalhe decorativo, nunca a única forma de ler uma informação.
+ *   - Textos em cor de marca usam os tons "-text" (≥ 5,7:1 no claro, ≥ 5,6:1 no escuro).
+ *
+ * O tema escuro tem, para cada token de componente, o valor que mantém o visual escuro original.
+ *
+ * Os componentes consomem apenas os tokens semânticos (--color-*), nunca os valores brutos.
+ */
+
+:root {
+  /* ---------- Paleta bruta ---------- */
+  --cyan-50: #eaf7f9;
+  --cyan-100: #d3eff3;
+  --cyan-300: #7fd8e5;
+  --cyan-400: #5ad0e0;
+  --cyan-500: #40c3d6; /* primária */
+  --cyan-550: #36c7dd; /* secundária */
+  --cyan-600: #2fb4c8;
+  --cyan-650: #2aa9bc;
+  --cyan-800: #0b6b79;
+  --cyan-950: #08353d;
+
+  --pink-50: #fde7f2;
+  --pink-200: #fad3e7;
+  --pink-400: #f06aae;
+  --pink-500: #ec3f97; /* terciária: detalhes */
+  --pink-700: #b8146a;
+  --pink-950: #1f0a15;
+
+  /* ---------- Semânticos: modo claro ---------- */
+  --color-bg: #f6fbfc;
+  --color-surface: #ffffff;
+  --color-surface-sunk: var(--cyan-50);
+  --color-border: #cfe6ea;
+  --color-border-strong: #6e8a90; /* bordas de campos: ≥ 3:1 */
+  --color-divider: var(--color-border);
+
+  --color-text: #17282c;
+  --color-text-muted: #4b6268;
+
+  --color-primary: var(--cyan-500);
+  --color-primary-hover: var(--cyan-600);
+  --color-primary-active: var(--cyan-650);
+  --color-primary-soft: var(--cyan-50);
+  --color-primary-text: var(--cyan-800);
+  --color-on-primary: var(--cyan-950);
+
+  --color-secondary: var(--cyan-550);
+  --color-secondary-soft: var(--cyan-100);
+
+  --color-accent: var(--pink-500);
+  --color-accent-soft: var(--pink-50);
+  --color-accent-text: var(--pink-700);
+  --color-on-accent: var(--pink-950);
+
+  --color-danger: #b42318;
+  --color-danger-soft: #feeceb;
+
+  --color-focus: var(--cyan-800);
+  --shadow-raised: 0 1px 0 rgb(8 53 61 / 0.04), 0 8px 24px -12px rgb(8 53 61 / 0.18);
+
+  /* ---------- Componentes ---------- */
+  --color-button-bg: var(--cyan-500);
+  --color-button-bg-hover: var(--cyan-600);
+  --color-button-bg-active: var(--cyan-650);
+  --color-button-text: var(--cyan-950);
+  --color-danger-button-bg: transparent;
+
+  --color-nav-bg: var(--color-surface);
+  --color-nav-rail-bg: var(--color-bg);
+  --color-nav-surface: var(--color-surface);
+  --color-nav-border: var(--color-border);
+  --color-nav-text: var(--color-text-muted);
+  --color-nav-strong: var(--color-text);
+  --color-nav-active-text: var(--color-primary-text);
+  --color-nav-active-bg: var(--color-primary-soft);
+  --color-nav-hover-bg: var(--color-surface-sunk);
+  --color-nav-focus: var(--color-focus);
+  --color-nav-indicator: var(--color-accent);
+
+  /* Detalhes em rosa */
+  --color-selected-border: var(--pink-500);
+  --color-field-focus: var(--pink-500);
+  --color-field-glow: var(--pink-200);
+  --color-avatar-ring: var(--pink-500);
+  --color-avatar-text: var(--color-primary-text);
+  --color-check-icon: var(--pink-500);
+  --color-link-underline: var(--pink-500);
+  --color-selection: var(--pink-200);
+  --color-notice-info-border: var(--pink-500);
+
+  --color-step-bg: var(--pink-500);
+  --color-step-text: var(--pink-950);
+  --color-done: var(--pink-500);
+  --color-done-dot: var(--pink-950);
+
+  --color-chip-bg: var(--color-surface-sunk);
+  --color-chip-text: var(--color-text-muted);
+  --color-chip-done-bg: var(--color-primary-soft);
+  --color-chip-done-text: var(--color-primary-text);
+  --color-badge-bg: var(--pink-500);
+  --color-badge-text: var(--pink-950);
+
+  --color-slogan-passing: var(--color-primary-text);
+  --color-slogan-period: var(--pink-500);
+  --color-panel-bg: var(--color-secondary-soft);
+  --color-panel-title: var(--color-text);
+  --color-pill-bg: var(--color-surface);
+  --color-pill-text: var(--color-text);
+  --color-pill-hl-bg: var(--pink-500);
+  --color-pill-hl-text: var(--pink-950);
+  --color-pill-alt-bg: var(--cyan-500);
+  --color-pill-alt-text: var(--cyan-950);
+
+  /* ---------- Tipografia ---------- */
+  --font-display: 'Young Serif', 'Iowan Old Style', Georgia, serif;
+  --font-text: 'Familjen Grotesk Variable', 'Segoe UI', system-ui, sans-serif;
+
+  /* Escala modular ~1,25 a partir de 17px */
+  --text-sm: 0.875rem;   /* 14 */
+  --text-base: 1.0625rem; /* 17 */
+  --text-md: 1.3125rem;  /* 21 */
+  --text-lg: 1.625rem;   /* 26 */
+  --text-xl: 2.0625rem;  /* 33 */
+  --text-2xl: clamp(2.25rem, 1.6rem + 3vw, 3.25rem); /* 36 → 52 */
+
+  --leading-tight: 1.12;
+  --leading-snug: 1.3;
+  --leading-body: 1.55;
+
+  /* ---------- Espaço, forma e movimento ---------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+
+  --gutter: 1rem; /* margem lateral no celular */
+  --measure: 38rem; /* largura de leitura */
+
+  --radius-sm: 8px;   /* campos */
+  --radius-md: 14px;  /* painéis */
+  --radius-pill: 999px; /* botões e selos */
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration: 180ms;
+
+  --nav-height: 4.25rem;
+
+  color-scheme: light;
+}
+
+/*
+ * ---------- Modo escuro (inalterado) ----------
+ * Os dois blocos abaixo precisam ficar idênticos: um segue o sistema, o outro é a escolha manual.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --color-bg: #0d1e22;
+    --color-surface: #152a2f;
+    --color-surface-sunk: #102428;
+    --color-border: #24414a;
+    --color-border-strong: #6f8f96;
+    --color-divider: var(--color-border);
+
+    --color-text: #e5f3f5;
+    --color-text-muted: #9bb4b9;
+
+    --color-primary: var(--cyan-500);
+    --color-primary-hover: var(--cyan-400);
+    --color-primary-active: var(--cyan-300);
+    --color-primary-soft: #133a41;
+    --color-primary-text: var(--cyan-400);
+    --color-on-primary: var(--cyan-950);
+
+    --color-secondary-soft: #17434b;
+
+    --color-accent: var(--pink-400);
+    --color-accent-soft: #3a1529;
+    --color-accent-text: #f472b6;
+
+    --color-danger: #ff9b8f;
+    --color-danger-soft: #3b1714;
+
+    --color-focus: var(--cyan-400);
+    --shadow-raised: 0 1px 0 rgb(0 0 0 / 0.2), 0 10px 28px -14px rgb(0 0 0 / 0.6);
+
+    --color-button-bg: var(--cyan-500);
+    --color-button-bg-hover: var(--cyan-400);
+    --color-button-bg-active: var(--cyan-300);
+    --color-button-text: var(--cyan-950);
+    --color-danger-button-bg: transparent;
+
+    --color-nav-bg: var(--color-surface);
+    --color-nav-rail-bg: var(--color-bg);
+    --color-nav-surface: var(--color-surface);
+    --color-nav-border: var(--color-border);
+    --color-nav-text: var(--color-text-muted);
+    --color-nav-strong: var(--color-text);
+    --color-nav-active-text: var(--color-primary-text);
+    --color-nav-active-bg: var(--color-primary-soft);
+    --color-nav-hover-bg: var(--color-surface-sunk);
+    --color-nav-focus: var(--color-focus);
+    --color-nav-indicator: var(--color-accent);
+
+    --color-selected-border: var(--color-primary-text);
+    --color-field-focus: var(--color-primary-text);
+    --color-field-glow: var(--color-secondary-soft);
+    --color-avatar-ring: var(--color-secondary);
+    --color-avatar-text: var(--color-primary-text);
+    --color-check-icon: currentColor;
+    --color-link-underline: currentColor;
+    --color-selection: var(--color-secondary-soft);
+    --color-notice-info-border: var(--color-primary);
+
+    --color-step-bg: var(--color-secondary-soft);
+    --color-step-text: var(--color-primary-text);
+    --color-done: var(--color-primary);
+    --color-done-dot: var(--color-on-primary);
+
+    --color-chip-bg: var(--color-surface-sunk);
+    --color-chip-text: var(--color-text-muted);
+    --color-chip-done-bg: var(--color-primary-soft);
+    --color-chip-done-text: var(--color-primary-text);
+    --color-badge-bg: var(--color-accent-soft);
+    --color-badge-text: var(--color-accent-text);
+
+    --color-slogan-passing: var(--color-primary-text);
+    --color-slogan-period: currentColor;
+    --color-panel-bg: var(--color-secondary-soft);
+    --color-panel-title: var(--color-text);
+    --color-pill-bg: var(--color-surface);
+    --color-pill-text: var(--color-text);
+    --color-pill-hl-bg: var(--color-primary);
+    --color-pill-hl-text: var(--color-on-primary);
+    --color-pill-alt-bg: var(--color-surface);
+    --color-pill-alt-text: var(--color-text);
+
+    color-scheme: light dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --color-bg: #0d1e22;
+  --color-surface: #152a2f;
+  --color-surface-sunk: #102428;
+  --color-border: #24414a;
+  --color-border-strong: #6f8f96;
+  --color-divider: var(--color-border);
+
+  --color-text: #e5f3f5;
+  --color-text-muted: #9bb4b9;
+
+  --color-primary: var(--cyan-500);
+  --color-primary-hover: var(--cyan-400);
+  --color-primary-active: var(--cyan-300);
+  --color-primary-soft: #133a41;
+  --color-primary-text: var(--cyan-400);
+  --color-on-primary: var(--cyan-950);
+
+  --color-secondary-soft: #17434b;
+
+  --color-accent: var(--pink-400);
+  --color-accent-soft: #3a1529;
+  --color-accent-text: #f472b6;
+
+  --color-danger: #ff9b8f;
+  --color-danger-soft: #3b1714;
+
+  --color-focus: var(--cyan-400);
+  --shadow-raised: 0 1px 0 rgb(0 0 0 / 0.2), 0 10px 28px -14px rgb(0 0 0 / 0.6);
+
+  --color-button-bg: var(--cyan-500);
+  --color-button-bg-hover: var(--cyan-400);
+  --color-button-bg-active: var(--cyan-300);
+  --color-button-text: var(--cyan-950);
+  --color-danger-button-bg: transparent;
+
+  --color-nav-bg: var(--color-surface);
+  --color-nav-rail-bg: var(--color-bg);
+  --color-nav-surface: var(--color-surface);
+  --color-nav-border: var(--color-border);
+  --color-nav-text: var(--color-text-muted);
+  --color-nav-strong: var(--color-text);
+  --color-nav-active-text: var(--color-primary-text);
+  --color-nav-active-bg: var(--color-primary-soft);
+  --color-nav-hover-bg: var(--color-surface-sunk);
+  --color-nav-focus: var(--color-focus);
+  --color-nav-indicator: var(--color-accent);
+
+  --color-selected-border: var(--color-primary-text);
+  --color-field-focus: var(--color-primary-text);
+  --color-field-glow: var(--color-secondary-soft);
+  --color-avatar-ring: var(--color-secondary);
+  --color-avatar-text: var(--color-primary-text);
+  --color-check-icon: currentColor;
+  --color-link-underline: currentColor;
+  --color-selection: var(--color-secondary-soft);
+  --color-notice-info-border: var(--color-primary);
+
+  --color-step-bg: var(--color-secondary-soft);
+  --color-step-text: var(--color-primary-text);
+  --color-done: var(--color-primary);
+  --color-done-dot: var(--color-on-primary);
+
+  --color-chip-bg: var(--color-surface-sunk);
+  --color-chip-text: var(--color-text-muted);
+  --color-chip-done-bg: var(--color-primary-soft);
+  --color-chip-done-text: var(--color-primary-text);
+  --color-badge-bg: var(--color-accent-soft);
+  --color-badge-text: var(--color-accent-text);
+
+  --color-slogan-passing: var(--color-primary-text);
+  --color-slogan-period: currentColor;
+  --color-panel-bg: var(--color-secondary-soft);
+  --color-panel-title: var(--color-text);
+  --color-pill-bg: var(--color-surface);
+  --color-pill-text: var(--color-text);
+  --color-pill-hl-bg: var(--color-primary);
+  --color-pill-hl-text: var(--color-on-primary);
+  --color-pill-alt-bg: var(--color-surface);
+  --color-pill-alt-text: var(--color-text);
+
+  color-scheme: dark;
+}
+
+@media (min-width: 40rem) {
+  :root {
+    --gutter: 2rem;
+  }
+}
