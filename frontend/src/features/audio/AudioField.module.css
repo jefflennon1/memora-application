@@ -1,0 +1,460 @@
+.field {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.fieldInToolbar {
+  flex: 0 0 auto;
+}
+
+.fieldInToolbarOpen {
+  flex: 1 0 100%;
+  order: 2;
+}
+
+.compactTrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  min-height: 2.5rem;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-sunk);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.compactTrigger svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  color: var(--color-accent-text);
+}
+
+.compactTrigger:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.compactTrigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.idlePanel,
+.recordingPanel,
+.preview {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-sunk);
+}
+
+.idlePanel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3);
+}
+
+.idlePanelCompact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.idlePanelCompact .idleIntro {
+  grid-column: 1;
+  grid-row: 1;
+  min-width: 0;
+}
+
+.idlePanelCompact .actions {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+
+.closeOptions {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-text-muted);
+  font: inherit;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.closeOptions:hover {
+  background: var(--color-accent-soft);
+  color: var(--color-text);
+}
+
+.idleIntro {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: min(100%, 17rem);
+}
+
+.idleIntro > span:last-child {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.idleIntro strong {
+  font-size: var(--text-sm);
+}
+
+.idleIntro small {
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  line-height: var(--leading-snug);
+}
+
+.micIcon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.fileButton {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 var(--space-3);
+  border: 1.5px dashed var(--color-accent);
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.fileButton:hover {
+  background: var(--color-accent-soft);
+}
+
+.fileButton[aria-disabled='true'] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.fileButton input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.recordingPanel {
+  display: grid;
+  grid-template-columns: minmax(9rem, 1fr) auto auto;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-color: var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent-soft) 62%, var(--color-surface));
+}
+
+.recordingVisual {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.recordingDot {
+  flex: 0 0 auto;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--color-danger);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-danger) 34%, transparent);
+  animation: recording-pulse 1.45s ease-out infinite;
+}
+
+.waveform {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  width: 100%;
+  max-width: 16rem;
+  height: 2.5rem;
+  overflow: hidden;
+}
+
+.waveform span {
+  flex: 1 1 3px;
+  min-width: 2px;
+  height: 72%;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  transform: scaleY(0.25);
+  animation: audio-wave 0.82s ease-in-out infinite alternate;
+}
+
+.waveform span:nth-child(3n) {
+  height: 42%;
+}
+
+.waveform span:nth-child(4n + 1) {
+  height: 94%;
+}
+
+.waveform span:nth-child(5n + 2) {
+  height: 58%;
+}
+
+.recordingText {
+  display: grid;
+  gap: 0.1rem;
+  white-space: nowrap;
+}
+
+.recordingText strong {
+  font-size: var(--text-sm);
+}
+
+.recordingText span {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.preview {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3);
+}
+
+.player {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-3);
+  width: min(100%, 34rem);
+  min-width: min(100%, 19rem);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(circle at 8% 0%, color-mix(in srgb, var(--color-accent-soft) 75%, transparent), transparent 42%),
+    var(--color-surface-sunk);
+}
+
+.playerCompact {
+  width: min(100%, 27rem);
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+}
+
+.audioNative {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.playButton,
+.soundButton {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.playButton {
+  width: 3rem;
+  height: 3rem;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: 0 6px 18px -10px color-mix(in srgb, var(--color-primary) 85%, transparent);
+}
+
+.playerCompact .playButton {
+  width: 2.55rem;
+  height: 2.55rem;
+}
+
+.playButton:hover {
+  background: var(--color-primary-hover);
+}
+
+.playButton svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+}
+
+.soundButton {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: transparent;
+  color: var(--color-text-muted);
+}
+
+.soundButton:hover {
+  background: var(--color-primary-soft);
+  color: var(--color-primary-text);
+}
+
+.soundButton svg {
+  width: 1.3rem;
+  height: 1.3rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.playerBody {
+  display: grid;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.playerTitle {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.audioLabel {
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.audioTime {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.waveSeek {
+  position: relative;
+  min-width: 0;
+  height: 2rem;
+}
+
+.savedWaveform {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 100%;
+  pointer-events: none;
+}
+
+.savedWaveform span {
+  flex: 1 1 2px;
+  min-width: 2px;
+  height: 32%;
+  border-radius: var(--radius-pill);
+  background: var(--color-border-strong);
+  opacity: 0.62;
+}
+
+.savedWaveform span:nth-child(3n) { height: 70%; }
+.savedWaveform span:nth-child(4n + 1) { height: 94%; }
+.savedWaveform span:nth-child(5n + 2) { height: 52%; }
+
+.savedWaveform .wavePlayed {
+  background: var(--color-accent);
+  opacity: 1;
+}
+
+.audioSeek {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.waveSeek:has(.audioSeek:focus-visible) {
+  outline: 3px solid var(--color-field-glow);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.error {
+  color: var(--color-danger);
+  font-size: var(--text-sm);
+  font-weight: 550;
+}
+
+@keyframes audio-wave {
+  to {
+    transform: scaleY(1);
+    opacity: 0.72;
+  }
+}
+
+@keyframes recording-pulse {
+  70% {
+    box-shadow: 0 0 0 0.55rem transparent;
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+@media (max-width: 40rem) {
+  .recordingPanel {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .recordingVisual {
+    grid-column: 1 / -1;
+  }
+
+  .recordingText {
+    white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recordingDot,
+  .waveform span {
+    animation: none;
+  }
+
+  .waveform span {
+    transform: scaleY(0.55);
+  }
+}

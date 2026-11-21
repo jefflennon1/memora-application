@@ -1,0 +1,470 @@
+.mural {
+  display: grid;
+  gap: var(--space-5);
+  min-width: 0;
+}
+
+.list {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+/* ---------- Barra do mural ---------- */
+
+.muralBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-top: var(--space-2);
+}
+
+.muralTitle {
+  font-size: var(--text-md);
+}
+
+.newMemoriesAction {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.segmented {
+  display: inline-flex;
+  padding: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-sunk);
+}
+
+.segmented button {
+  min-height: 2.25rem;
+  padding: 0 var(--space-4);
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  cursor: pointer;
+}
+
+.segmented button[aria-pressed='true'] {
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: 0 0 0 1.5px var(--color-selected-border);
+}
+
+/* ---------- Cartão de memória ---------- */
+
+.card {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  min-width: 0;
+}
+
+.cardHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.meta {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.meta a {
+  color: inherit;
+}
+
+.text {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  font-size: var(--text-base);
+}
+
+.grid {
+  display: grid;
+  gap: 4px;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.grid[data-count='1'] {
+  grid-template-columns: 1fr;
+}
+
+.grid[data-count='3'] .thumb:first-child,
+.grid[data-count='5'] .thumb:first-child {
+  grid-column: 1 / -1;
+}
+
+.thumb {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: var(--color-surface-sunk);
+  cursor: zoom-in;
+  min-width: 0;
+}
+
+.thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.grid[data-count='1'] .thumb img {
+  max-height: 34rem;
+  object-fit: contain;
+}
+
+.videoPlayer {
+  display: grid;
+  gap: var(--space-2);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: #000;
+}
+
+.videoPlayer video {
+  display: block;
+  width: 100%;
+  max-height: min(72dvh, 38rem);
+  background: #000;
+  object-fit: contain;
+}
+
+.videoPlayer span {
+  padding: 0 var(--space-3) var(--space-3);
+  color: #fff;
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.thumb:focus-visible {
+  outline-offset: -3px;
+}
+
+.engagement {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-1);
+  min-height: 3rem;
+  padding: var(--space-1) 0;
+  border-top: 1px solid var(--color-divider);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.moreActions {
+  position: relative;
+  margin-left: auto;
+}
+
+.moreActions > summary {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  color: var(--color-text);
+  cursor: pointer;
+  list-style: none;
+}
+
+.moreActions > summary::-webkit-details-marker {
+  display: none;
+}
+
+.moreActions > summary:hover,
+.moreActions[open] > summary {
+  background: var(--color-primary-soft);
+}
+
+.moreActions > summary svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: currentColor;
+}
+
+.actionsMenu {
+  position: absolute;
+  z-index: 9;
+  right: 0;
+  top: calc(100% + var(--space-2));
+  display: grid;
+  gap: var(--space-1);
+  min-width: 12rem;
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-raised);
+}
+
+.actionsMenu > * {
+  width: 100%;
+}
+
+.cardActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: calc(-1 * var(--space-1));
+}
+
+.fresh {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.freshLabel {
+  justify-self: start;
+  padding: 0.1rem 0.6rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-badge-bg);
+  color: var(--color-badge-text);
+  font-size: 0.8125rem;
+  font-weight: 650;
+}
+
+/* ---------- Composer ---------- */
+
+.composer {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.composer:focus-within {
+  border-color: var(--color-field-focus);
+}
+
+.card .composer {
+  padding: 0;
+  border: 0;
+}
+
+.hint {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.uploads {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr));
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.upload {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-sunk);
+  aspect-ratio: 1;
+}
+
+.upload img,
+.upload video,
+.uploadPlaceholder {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.upload video {
+  background: #000;
+}
+
+.upload[data-status='uploading'] img {
+  opacity: 0.45;
+}
+
+.upload[data-status='uploading'] video {
+  opacity: 0.45;
+}
+
+.upload[data-status='error'] {
+  outline: 2px solid var(--color-danger);
+  outline-offset: -2px;
+}
+
+.upload[data-status='error'] img {
+  opacity: 0.25;
+}
+
+.uploadStatus {
+  grid-area: 1 / 1;
+  align-self: end;
+  padding: var(--space-1) var(--space-2);
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.upload[data-status='error'] .uploadStatus {
+  color: var(--color-danger);
+}
+
+.uploadRemove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 1.9rem;
+  height: 1.9rem;
+  border: 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+  color: var(--color-text);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.uploadRemove:disabled {
+  cursor: progress;
+  opacity: 0.5;
+}
+
+.composerActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.spacer {
+  flex: 1;
+}
+
+.mediaTools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.mediaTool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 2.5rem;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface-sunk);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.mediaTool svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: none;
+  stroke: var(--color-accent-text);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mediaTool:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.mediaTool:focus-visible,
+.mediaTool:focus-within {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------- Visualizador ---------- */
+
+.lightbox {
+  width: min(100vw, 72rem);
+  max-width: 100vw;
+  max-height: 100dvh;
+  padding: var(--space-4);
+  border: 0;
+  background: transparent;
+  color: #fff;
+}
+
+.lightbox::backdrop {
+  background: rgb(4 16 19 / 0.88);
+}
+
+.lightboxImage {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100dvh - 7rem);
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  border-radius: var(--radius-sm);
+  object-fit: contain;
+}
+
+.lightboxBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.lightboxButton,
+.lightboxClose {
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  border: 1.5px solid rgb(255 255 255 / 0.4);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: #fff;
+  font-size: var(--text-md);
+  cursor: pointer;
+}
+
+.lightboxClose {
+  margin-left: var(--space-4);
+  padding: 0 var(--space-4);
+  font-size: var(--text-base);
+  font-weight: 600;
+}
+
+.lightboxCount {
+  font-variant-numeric: tabular-nums;
+}
