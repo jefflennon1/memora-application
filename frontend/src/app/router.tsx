@@ -1,7 +1,6 @@
 import { Link, isRouteErrorResponse, useRouteError, type RouteObject } from 'react-router';
 import { RequireOnboarded, RequireSession } from '../auth/session';
 import { AppShell } from '../components/AppShell';
-import { ComingSoon } from '../components/ComingSoon';
 import { FlexibleShell } from '../components/FlexibleShell';
 import { Wordmark } from '../components/Wordmark';
 import { EditEventTab } from '../features/events/EditEventTab';
@@ -14,6 +13,7 @@ import { RegisterPage } from '../features/login/RegisterPage';
 import { InvitePage } from '../features/membership/InvitePage';
 import { InvitesTab } from '../features/membership/InvitesTab';
 import { PeopleTab } from '../features/membership/PeopleTab';
+import { MemoryPage, MuralTab } from '../features/memories/MuralTab';
 import { OnboardingPage } from '../features/onboarding/OnboardingPage';
 import { ProfilePage } from '../features/profile/ProfilePage';
 import styles from './router.module.css';
@@ -22,7 +22,8 @@ import styles from './router.module.css';
  * Mapa de rotas.
  *  /login                       entrada (pública); trata ?error= e ?next=
  *  /onboarding                  cadastro inicial (exige sessão)
- *  /explore e /events/:id/…     abrem sem login; com conta ativa, dentro do app
+ *  /explore, /events/:id/…,
+ *  /memories/:id                abrem sem login (conteúdo público); com conta ativa, dentro do app
  *  /invites/:token              exige sessão, mas abre antes do cadastro
  *  demais                       exigem sessão + cadastro concluído, dentro do AppShell
  */
@@ -45,19 +46,13 @@ export const routes: RouteObject[] = [
             path: '/events/:eventId',
             element: <EventLayout />,
             children: [
-              {
-                index: true,
-                element: (
-                  <ComingSoon title="Memórias" delivery="Próxima camada do showcase">
-                    <p>O mural de memórias será incorporado no próximo commit temático.</p>
-                  </ComingSoon>
-                ),
-              },
+              { index: true, element: <MuralTab /> },
               { path: 'people', element: <PeopleTab /> },
               { path: 'invites', element: <InvitesTab /> },
               { path: 'edit', element: <EditEventTab /> },
             ],
           },
+          { path: '/memories/:memoryId', element: <MemoryPage /> },
         ],
       },
       {
