@@ -1,0 +1,11 @@
+memora:
+  auth:
+    google:
+      client-id: test-client
+      client-secret: test-secret
+  frontend:
+    origin: http://localhost:3000
+    post-login-redirect: http://localhost:3000/
+    login-error-redirect: http://localhost:3000/login
+  media:
+    cleanup-enabled: false
