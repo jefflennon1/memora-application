@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="Memora: memórias coletivas organizadas por eventos. Momentos passam. Memórias ficam." />
+    <meta name="theme-color" content="#F6FBFC" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0D1E22" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Memora</title>
+    <script>
+      // Aplica o tema escolhido antes da primeira pintura (ver src/theme/theme.ts).
+      try {
+        var t = localStorage.getItem('memora-theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

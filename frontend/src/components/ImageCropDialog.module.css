@@ -1,0 +1,362 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: var(--space-4);
+  background: rgb(4 16 19 / 0.8);
+  backdrop-filter: blur(6px);
+}
+
+.dialog {
+  display: grid;
+  gap: var(--space-4);
+  width: min(100%, 46rem);
+  max-height: calc(100dvh - (2 * var(--space-4)));
+  padding: clamp(var(--space-4), 4vw, var(--space-6));
+  overflow-y: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-raised);
+}
+
+.header,
+.actions,
+.timelineHeading,
+.timeLabels,
+.zoomControl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.header h2 {
+  margin-top: var(--space-1);
+}
+
+.eyebrow {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: 650;
+}
+
+.close {
+  flex: 0 0 auto;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-surface-sunk);
+  color: var(--color-text);
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.close:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.aspectChoices {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+}
+
+.aspectChoices button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.aspectChoices button:hover,
+.aspectChoices .aspectActive {
+  border-color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 10%, var(--color-surface));
+  color: var(--color-primary);
+}
+
+.aspectIcon {
+  display: block;
+  width: 1.15rem;
+  max-height: 1.15rem;
+  border: 1.5px solid currentcolor;
+  border-radius: 2px;
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-height: 48dvh;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: #071316;
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 0.16), 0 0.6rem 2rem rgb(0 0 0 / 0.18);
+  transition: aspect-ratio 180ms ease;
+}
+
+.stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  cursor: grab;
+  touch-action: none;
+}
+
+.stage canvas:active {
+  cursor: grabbing;
+}
+
+.stage video {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading {
+  position: absolute;
+  color: rgb(255 255 255 / 0.72);
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgb(255 255 255 / 0.85);
+  background:
+    linear-gradient(to right, transparent 33.2%, rgb(255 255 255 / 0.25) 33.3%, rgb(255 255 255 / 0.25) 33.55%, transparent 33.65%, transparent 66.4%, rgb(255 255 255 / 0.25) 66.5%, rgb(255 255 255 / 0.25) 66.75%, transparent 66.85%),
+    linear-gradient(to bottom, transparent 33.2%, rgb(255 255 255 / 0.25) 33.3%, rgb(255 255 255 / 0.25) 33.55%, transparent 33.65%, transparent 66.4%, rgb(255 255 255 / 0.25) 66.5%, rgb(255 255 255 / 0.25) 66.75%, transparent 66.85%);
+  pointer-events: none;
+}
+
+.corner {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-color: #fff;
+  border-style: solid;
+  filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.55));
+  pointer-events: none;
+}
+
+.topLeft { top: 0; left: 0; border-width: 3px 0 0 3px; }
+.topRight { top: 0; right: 0; border-width: 3px 3px 0 0; }
+.bottomLeft { bottom: 0; left: 0; border-width: 0 0 3px 3px; }
+.bottomRight { right: 0; bottom: 0; border-width: 0 3px 3px 0; }
+
+.positionControls {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.positionControls p {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  text-align: center;
+}
+
+.zoomControl {
+  justify-content: center;
+}
+
+.zoomControl label {
+  width: min(15rem, 48vw);
+}
+
+.zoomControl input {
+  display: block;
+  width: 100%;
+  accent-color: var(--color-primary);
+}
+
+.zoomControl button,
+.previewButton {
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface-sunk);
+  color: var(--color-text);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.zoomControl button:not(.reset) {
+  font-size: 1.25rem;
+}
+
+.zoomControl button:disabled,
+.previewButton:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+
+.zoomControl .reset {
+  padding-inline: var(--space-3);
+  font-size: var(--text-sm);
+}
+
+.timelineSection {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-sunk);
+}
+
+.timelineHeading div {
+  display: grid;
+  gap: 2px;
+}
+
+.timelineHeading span,
+.processing small {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.previewButton {
+  padding-inline: var(--space-4);
+  border-color: color-mix(in srgb, var(--color-primary) 45%, var(--color-border));
+  color: var(--color-primary);
+  font-size: var(--text-sm);
+}
+
+.timeline {
+  --selection-left: 0%;
+  --selection-width: 100%;
+  position: relative;
+  height: 2rem;
+}
+
+.timelineTrack,
+.timelineSelection {
+  position: absolute;
+  top: calc(50% - 0.28rem);
+  right: 0;
+  left: 0;
+  height: 0.56rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-text-muted) 22%, transparent);
+}
+
+.timelineSelection {
+  right: auto;
+  left: var(--selection-left);
+  width: var(--selection-width);
+  background: var(--color-primary);
+}
+
+.timeline input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  appearance: none;
+  background: transparent;
+  pointer-events: none;
+}
+
+.timeline input::-webkit-slider-runnable-track { height: 0.56rem; background: transparent; }
+.timeline input::-moz-range-track { height: 0.56rem; background: transparent; }
+.timeline input::-webkit-slider-thumb {
+  width: 1.35rem;
+  height: 1.35rem;
+  margin-top: -0.4rem;
+  appearance: none;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 1px 5px rgb(0 0 0 / 0.35);
+  pointer-events: auto;
+  cursor: ew-resize;
+}
+.timeline input::-moz-range-thumb {
+  width: 1rem;
+  height: 1rem;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 1px 5px rgb(0 0 0 / 0.35);
+  pointer-events: auto;
+  cursor: ew-resize;
+}
+
+.timeLabels {
+  align-items: end;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.timeLabels span:first-child,
+.timeLabels span:last-child {
+  display: grid;
+}
+
+.timeLabels span:last-child { text-align: right; }
+.timeLabels small { color: var(--color-text-muted); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; }
+.timeLabels .clipDuration { color: var(--color-primary); font-size: var(--text-sm); }
+
+.processing {
+  display: grid;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface));
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  font-weight: 650;
+}
+
+.processing progress {
+  width: 100%;
+  accent-color: var(--color-primary);
+}
+
+.error {
+  margin: 0;
+  color: var(--color-danger);
+}
+
+.actions {
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 36rem) {
+  .backdrop { align-items: end; padding: 0; }
+  .dialog { width: 100%; max-height: 96dvh; padding: var(--space-4); border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+  .stage { max-height: 43dvh; }
+  .aspectChoices button { display: grid; gap: 3px; font-size: 0.72rem; }
+  .aspectIcon { justify-self: center; }
+  .zoomControl .reset { padding-inline: var(--space-2); }
+  .timelineSection { padding: var(--space-3); }
+  .actions > * { flex: 1 1 8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage { transition: none; }
+}

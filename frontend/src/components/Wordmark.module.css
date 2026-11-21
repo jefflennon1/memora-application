@@ -1,0 +1,19 @@
+.wordmark {
+  font-family: var(--font-display);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.md {
+  font-size: 1.5rem;
+}
+
+.lg {
+  font-size: 2rem;
+}
+
+.dot {
+  color: var(--color-accent);
+}

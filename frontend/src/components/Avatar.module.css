@@ -1,0 +1,15 @@
+.avatar {
+  flex: none;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--color-secondary-soft);
+  box-shadow: 0 0 0 2px var(--color-surface), 0 0 0 4px var(--color-avatar-ring);
+}
+
+.initials {
+  display: inline-grid;
+  place-items: center;
+  font-family: var(--font-display);
+  color: var(--color-avatar-text);
+  line-height: 1;
+}

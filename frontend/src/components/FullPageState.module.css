@@ -1,0 +1,29 @@
+.page {
+  min-height: 100dvh;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--space-5);
+  padding: var(--space-6) var(--gutter);
+  text-align: center;
+}
+
+.text {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 28rem;
+}
+
+.title {
+  font-size: var(--text-lg);
+}
+
+.quiet {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.quiet code {
+  font-size: 0.95em;
+  color: var(--color-text);
+}
