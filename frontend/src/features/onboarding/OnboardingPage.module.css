@@ -1,0 +1,88 @@
+.page {
+  min-height: 100dvh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: max(var(--space-4), env(safe-area-inset-top)) var(--gutter) var(--space-4);
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: var(--space-4) var(--gutter) var(--space-8);
+}
+
+.intro {
+  display: grid;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.title {
+  font-size: var(--text-xl);
+}
+
+.lede {
+  color: var(--color-text-muted);
+  font-size: var(--text-md);
+  line-height: var(--leading-snug);
+}
+
+.form {
+  display: grid;
+  gap: var(--space-6);
+}
+
+.step {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.stepHeading {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-md);
+}
+
+/* Os passos são de fato uma sequência: o número orienta, sem enfeitar. */
+.stepNumber {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--color-step-bg);
+  color: var(--color-step-text);
+  font-family: var(--font-text);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+/* Botão no fim do formulário (não fixo): com o teclado aberto no celular, nada fica escondido. */
+.submit {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media (min-width: 40rem) {
+  .submit {
+    justify-self: start;
+    min-width: 16rem;
+  }
+}

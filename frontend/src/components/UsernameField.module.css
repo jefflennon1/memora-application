@@ -1,0 +1,16 @@
+.checking {
+  color: var(--color-text-muted);
+}
+
+.available {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--color-primary-text);
+  font-weight: 600;
+}
+
+.icon {
+  flex: none;
+  color: var(--color-check-icon);
+}
