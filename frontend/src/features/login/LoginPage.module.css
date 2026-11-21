@@ -1,0 +1,210 @@
+.page {
+  min-height: 100dvh;
+  display: grid;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  width: 100%;
+  max-width: 34rem;
+  padding: max(var(--space-6), env(safe-area-inset-top)) var(--gutter) var(--space-7);
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+/* ---------- O momento: "Momentos passam." vai embora, "Memórias ficam." fica ---------- */
+
+.slogan {
+  display: grid;
+  margin-top: var(--space-6);
+  font-size: var(--text-2xl);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+}
+
+.passing {
+  color: var(--color-slogan-passing);
+  animation: pass 1.8s var(--ease-out) 0.35s both;
+}
+
+.staying {
+  animation: stay 1s var(--ease-out) 0.9s both;
+}
+
+/* O ponto final rosa do slogan repete o ponto de "memora.". */
+.period {
+  color: var(--color-slogan-period);
+}
+
+@keyframes pass {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+  to {
+    /* Desliza pouco: no celular não pode ultrapassar a margem lateral. */
+    transform: translateX(-0.22em);
+    opacity: 0.55;
+    filter: blur(0.4px);
+  }
+}
+
+@keyframes stay {
+  from {
+    opacity: 0;
+    transform: translateY(0.18em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.lede {
+  max-width: 30rem;
+  font-size: var(--text-md);
+  line-height: var(--leading-snug);
+  color: var(--color-text-muted);
+}
+
+.registerHeading {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+
+.registerHeading h1 {
+  font-size: var(--text-xl);
+}
+
+.registerHeading p {
+  color: var(--color-text-muted);
+}
+
+.actions {
+  display: grid;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.localForm {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.createAccount {
+  display: grid;
+  gap: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  height: 1px;
+  flex: 1;
+  background: var(--color-divider);
+}
+
+.google {
+  flex: none;
+  padding: 2px;
+  border-radius: 50%;
+  background: #fff;
+  box-sizing: content-box;
+}
+
+.fine {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+/* ---------- Painel de categorias (telas largas) ---------- */
+
+.panel {
+  display: none;
+}
+
+@media (min-width: 60rem) {
+  .page {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  }
+
+  .main {
+    justify-self: end;
+    justify-content: center;
+    max-width: 40rem;
+    padding: var(--space-8) var(--space-7);
+  }
+
+  .slogan span {
+    white-space: nowrap;
+  }
+
+  .slogan {
+    margin-top: var(--space-5);
+  }
+
+  .panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-5);
+    padding: var(--space-8) var(--space-7);
+    background: var(--color-panel-bg);
+  }
+
+  .panelTitle {
+    color: var(--color-panel-title);
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    line-height: var(--leading-tight);
+    max-width: 18rem;
+  }
+
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    max-width: 30rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .categories li {
+    padding: 0.35rem 0.9rem;
+    border-radius: var(--radius-pill);
+    background: var(--color-pill-bg);
+    color: var(--color-pill-text);
+    font-size: var(--text-sm);
+    font-weight: 550;
+  }
+
+  .categories li:nth-child(5n + 1) {
+    background: var(--color-pill-hl-bg);
+    color: var(--color-pill-hl-text);
+  }
+
+  .categories li:nth-child(5n + 3) {
+    background: var(--color-pill-alt-bg);
+    color: var(--color-pill-alt-text);
+  }
+}

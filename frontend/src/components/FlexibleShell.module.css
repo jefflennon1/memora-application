@@ -1,0 +1,67 @@
+.shell {
+  min-height: 100dvh;
+}
+
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: max(var(--space-3), env(safe-area-inset-top)) var(--gutter) var(--space-3);
+  background: color-mix(in srgb, var(--color-bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.brand {
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--color-button-bg);
+  color: var(--color-button-text);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.cta:hover {
+  background: var(--color-button-bg-hover);
+}
+
+.wideOnly {
+  display: none;
+}
+
+@media (min-width: 34rem) {
+  .wideOnly {
+    display: inline-flex;
+  }
+}
+
+.main {
+  max-width: 64rem;
+  margin: 0 auto;
+  padding: var(--space-5) var(--gutter) var(--space-8);
+}
+
+@media (min-width: 56rem) {
+  .main {
+    padding-top: var(--space-7);
+  }
+}
