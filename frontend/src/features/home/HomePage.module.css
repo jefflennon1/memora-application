@@ -1,0 +1,58 @@
+.page {
+  display: grid;
+  gap: var(--space-7);
+  width: 100%;
+  max-width: 48rem;
+}
+
+.header {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.title {
+  font-size: var(--text-2xl);
+}
+
+.lede {
+  color: var(--color-text-muted);
+  font-size: var(--text-md);
+  line-height: var(--leading-snug);
+  max-width: 40rem;
+}
+
+/* ---------- Convites recebidos ---------- */
+
+.invite {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border: 1.5px solid var(--color-selected-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  color: inherit;
+  text-decoration: none;
+}
+
+.invite:hover .inviteName {
+  text-decoration: underline;
+  text-decoration-color: var(--color-link-underline);
+}
+
+.inviteText {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.inviteName {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  line-height: var(--leading-tight);
+}
+
+.inviteMeta {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
