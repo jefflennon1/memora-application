@@ -4,9 +4,69 @@
 
 Memora is a social platform for collecting the photos, videos, audio and stories that people create around shared events. Organizers can manage participation and invitations; guests can contribute memories and continue the conversation through comments, mentions and reactions.
 
-[Português (Brasil)](README.pt-BR.md) · [Live product](https://memora-social.com.br/login)
+[Português (Brasil)](README.pt-BR.md) · [Join Memora](https://memora-social.com.br)
 
 > The live link is provided only as a product demonstration. This repository's development configuration never points to the production API, database or object storage.
+
+> **Want to participate? Visit [memora-social.com.br](https://memora-social.com.br). Creating an account is free — and always will be.**
+
+## The idea behind Memora
+
+The person organizing an important event cannot always capture everything while making it happen. Memora turns each event into a collaborative memory wall: guests help preserve the moment with photos, videos, audio and messages, then keep those memories alive through reactions and comments. What would otherwise be scattered across different phones becomes a shared record that everyone who took part can revisit in the future.
+
+## How the experience flows
+
+```mermaid
+flowchart LR
+    A[Create a free account] --> B[Create or join an event]
+    B --> C[Invite the people who were there]
+    C --> D[Share photos, videos, audio and stories]
+    D --> E[React and comment together]
+    E --> F[Revisit the collective memories]
+    B --> G[Explore public events]
+    B --> H[Control profile and visibility]
+```
+
+## Product tour
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <strong>1. Join in the way that works for you</strong><br><br>
+      Create a free account, sign in locally or continue with Google. The entry page also shows the kinds of moments the platform can preserve.<br><br>
+      <img src="docs/assets/product-tour/login.png" alt="Memora sign-in and registration page">
+    </td>
+    <td width="50%" valign="top">
+      <strong>2. Find every shared event in one place</strong><br><br>
+      The home panel brings together events you organize and events you participate in, with their date, category, privacy and your role.<br><br>
+      <img src="docs/assets/product-tour/dashboard.png" alt="Memora home panel with the user's events">
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <strong>3. Turn an event into a collaborative wall</strong><br><br>
+      Organizers define the event, its story and visibility. Participants contribute text, photos, videos and audio to the same contextual timeline.<br><br>
+      <img src="docs/assets/product-tour/event-wall.png" alt="Event page and collaborative memory composer">
+    </td>
+    <td width="50%" valign="top">
+      <strong>4. Preserve and enrich each memory</strong><br><br>
+      Memories keep their author and media together. Participants can react and comment, turning isolated files into a shared account of the moment.<br><br>
+      <img src="docs/assets/product-tour/memory-post.png" alt="Memory post with media, reactions and comments">
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <strong>5. Discover public events</strong><br><br>
+      Public events can be found by name, city and category. Private events never appear in discovery and remain governed by their access rules.<br><br>
+      <img src="docs/assets/product-tour/explore.png" alt="Public event discovery page">
+    </td>
+    <td width="50%" valign="top">
+      <strong>6. Keep identity and privacy under control</strong><br><br>
+      Each person manages their display identity, photo and profile visibility, choosing between a broader presence and an event-only profile.<br><br>
+      <img src="docs/assets/product-tour/profile.png" alt="Profile and privacy settings page with sanitized contact data">
+    </td>
+  </tr>
+</table>
 
 ## What this repository shows
 

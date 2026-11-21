@@ -4,9 +4,69 @@
 
 O Memora é uma plataforma social para reunir fotos, vídeos, áudios e histórias criadas em torno de eventos compartilhados. Organizadores gerenciam participantes e convites; convidados contribuem com memórias e continuam a conversa por comentários, menções e reações.
 
-[English](README.md) · [Produto em funcionamento](https://memora-social.com.br/login)
+[English](README.md) · [Participar da Memora](https://memora-social.com.br)
 
 > O link público serve apenas como demonstração do produto. A configuração de desenvolvimento deste repositório nunca aponta para API, banco ou armazenamento de produção.
+
+> **Quer participar? Acesse [memora-social.com.br](https://memora-social.com.br). O cadastro é gratuito — e sempre será.**
+
+## A ideia por trás da Memora
+
+Quem organiza um momento importante nem sempre consegue registrar tudo enquanto faz o evento acontecer. A Memora transforma cada evento em um mural colaborativo: os convidados ajudam a preservar a ocasião com fotos, vídeos, áudios e mensagens, e mantêm essas lembranças vivas por meio de reações e comentários. O que ficaria espalhado em diferentes celulares se torna um registro compartilhado, que poderá ser revisitado no futuro por todos que participaram.
+
+## Como a experiência funciona
+
+```mermaid
+flowchart LR
+    A[Crie sua conta gratuitamente] --> B[Crie ou participe de um evento]
+    B --> C[Convide quem viveu aquele momento]
+    C --> D[Compartilhe fotos, vídeos, áudios e histórias]
+    D --> E[Reaja e comente com os participantes]
+    E --> F[Revisite as memórias coletivas]
+    B --> G[Explore eventos públicos]
+    B --> H[Controle perfil e visibilidade]
+```
+
+## Conheça o produto
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <strong>1. Entre do jeito que preferir</strong><br><br>
+      Crie uma conta gratuita, entre com usuário e senha ou continue com o Google. A entrada também apresenta os tipos de momentos que a plataforma pode preservar.<br><br>
+      <img src="docs/assets/product-tour/login.png" alt="Página de entrada e cadastro da Memora">
+    </td>
+    <td width="50%" valign="top">
+      <strong>2. Encontre todos os eventos em um só lugar</strong><br><br>
+      O painel inicial reúne eventos que você organiza e aqueles dos quais participa, mostrando data, categoria, privacidade e seu papel.<br><br>
+      <img src="docs/assets/product-tour/dashboard.png" alt="Painel inicial da Memora com os eventos do usuário">
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <strong>3. Transforme um evento em mural colaborativo</strong><br><br>
+      A organização define o evento, sua história e visibilidade. Participantes contribuem com textos, fotos, vídeos e áudios na mesma linha do tempo contextualizada.<br><br>
+      <img src="docs/assets/product-tour/event-wall.png" alt="Página do evento e composição de uma nova memória">
+    </td>
+    <td width="50%" valign="top">
+      <strong>4. Preserve e enriqueça cada memória</strong><br><br>
+      As memórias mantêm autoria e mídia reunidas. Participantes podem reagir e comentar, transformando arquivos isolados em um relato compartilhado daquele momento.<br><br>
+      <img src="docs/assets/product-tour/memory-post.png" alt="Publicação de memória com mídia, reações e comentários">
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <strong>5. Descubra eventos públicos</strong><br><br>
+      Eventos públicos podem ser encontrados por nome, cidade e categoria. Eventos privados nunca aparecem na busca e continuam protegidos por suas regras de acesso.<br><br>
+      <img src="docs/assets/product-tour/explore.png" alt="Página para explorar eventos públicos">
+    </td>
+    <td width="50%" valign="top">
+      <strong>6. Mantenha identidade e privacidade sob controle</strong><br><br>
+      Cada pessoa gerencia nome, foto e visibilidade do perfil, escolhendo entre uma presença mais aberta e um perfil reservado a participantes de eventos em comum.<br><br>
+      <img src="docs/assets/product-tour/profile.png" alt="Configurações de perfil e privacidade com contato sanitizado">
+    </td>
+  </tr>
+</table>
 
 ## O que este repositório demonstra
 
