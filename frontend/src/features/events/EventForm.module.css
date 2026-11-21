@@ -1,0 +1,46 @@
+.form {
+  display: grid;
+  gap: var(--space-6);
+  max-width: 40rem;
+}
+
+.group {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.legend {
+  padding: 0;
+  margin-bottom: var(--space-1);
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+}
+
+.pair {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 34rem) {
+  .pair {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.error {
+  color: var(--color-danger);
+  font-size: var(--text-sm);
+  font-weight: 550;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}

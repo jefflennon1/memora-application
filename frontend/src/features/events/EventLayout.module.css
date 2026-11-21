@@ -1,0 +1,256 @@
+.layout {
+  display: grid;
+  gap: var(--space-5);
+  max-width: 44rem;
+  min-width: 0;
+}
+
+.content {
+  min-width: 0;
+}
+
+.header {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.coverBlock {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.coverInput {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.cover {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 6;
+  min-height: 11rem;
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-sunk);
+  box-shadow: inset 0 0 0 1px var(--color-border);
+}
+
+.cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.coverEmpty {
+  background:
+    radial-gradient(circle at 78% 22%, color-mix(in srgb, var(--color-accent) 22%, transparent), transparent 33%),
+    linear-gradient(135deg, var(--color-primary-soft), var(--color-surface-sunk));
+}
+
+.coverPlaceholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.coverActions {
+  position: absolute;
+  right: var(--space-3);
+  bottom: var(--space-3);
+  display: flex;
+  gap: var(--space-2);
+}
+
+.coverButton {
+  min-height: 2.65rem;
+  padding-inline: var(--space-4);
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+  box-shadow: 0 0.25rem 1rem rgb(0 0 0 / 0.18);
+  backdrop-filter: blur(8px);
+}
+
+.coverConfirm {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-sunk);
+}
+
+.coverConfirm span {
+  flex: 1 1 12rem;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.titleText {
+  display: grid;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--text-xl);
+  overflow-wrap: anywhere;
+}
+
+.when {
+  font-weight: 600;
+}
+
+.where {
+  color: var(--color-text-muted);
+  overflow-wrap: anywhere;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.description {
+  white-space: pre-line;
+  max-width: 38rem;
+}
+
+.descriptionPanel {
+  position: relative;
+  min-width: 0;
+  padding: clamp(var(--space-4), 3vw, var(--space-6));
+  overflow: hidden;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.descriptionEyebrow {
+  display: block;
+  margin-bottom: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.descriptionTitle {
+  margin-bottom: var(--space-4);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  line-height: var(--leading-tight);
+}
+
+.descriptionText {
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  line-height: var(--leading-body);
+}
+
+.organizer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.organizerLabel {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+/* ---------- Abas ---------- */
+
+.tabs {
+  display: flex;
+  gap: var(--space-1);
+  overflow-x: auto;
+  border-bottom: 1px solid var(--color-divider);
+  scrollbar-width: none;
+}
+
+.tab {
+  position: relative;
+  flex: none;
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-text-muted);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+.tab:hover {
+  color: var(--color-text);
+  background: var(--color-surface-sunk);
+}
+
+.tab[aria-current='page'] {
+  color: var(--color-text);
+}
+
+/* A aba ativa ganha um traço rosa, como os detalhes da marca. */
+.tab[aria-current='page']::after {
+  content: '';
+  position: absolute;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: -1px;
+  height: 3px;
+  border-radius: 3px 3px 0 0;
+  background: var(--color-accent);
+}
+
+@media (min-width: 70rem) {
+  .withDescription {
+    width: 100%;
+    max-width: 72rem;
+    grid-template-columns: minmax(0, 44rem) minmax(17rem, 1fr);
+    column-gap: clamp(var(--space-5), 3vw, var(--space-7));
+    align-items: start;
+  }
+
+  .withDescription .header,
+  .withDescription .tabs,
+  .withDescription .content {
+    grid-column: 1;
+  }
+
+  .withDescription .descriptionPanel {
+    position: sticky;
+    top: var(--space-7);
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    max-height: calc(100dvh - (2 * var(--space-7)));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+@media (max-width: 36rem) {
+  .cover {
+    aspect-ratio: 16 / 9;
+    min-height: 10rem;
+  }
+
+  .coverActions {
+    left: var(--space-3);
+  }
+
+  .coverButton {
+    flex: 1;
+    padding-inline: var(--space-3);
+  }
+}

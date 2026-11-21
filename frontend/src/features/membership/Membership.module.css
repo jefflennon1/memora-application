@@ -1,0 +1,522 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.rowActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.meta {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+/* ---------- Confirmação de presença ---------- */
+
+.attendancePanel {
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-raised);
+}
+
+.myAttendance {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.attendanceTitle {
+  font-weight: 700;
+}
+
+.attendanceButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.attendanceStats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-2);
+  margin: 0;
+}
+
+.attendanceStats div {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-sunk);
+}
+
+.attendanceStats dt {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.attendanceStats dd {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+}
+
+@media (max-width: 38rem) {
+  .attendanceStats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .attendanceButtons,
+  .attendanceButtons > * {
+    width: 100%;
+  }
+}
+
+/* ---------- Convites ---------- */
+
+.inviteForm {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-sunk);
+}
+
+.pageForm,
+.formSection {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.pageForm {
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-divider);
+}
+
+.formSection h3,
+.inlineEditor h3 {
+  margin: 0;
+  font-size: var(--text-md);
+}
+
+.backgroundFields {
+  display: grid;
+  gap: var(--space-4);
+  min-width: 0;
+  margin: 0;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.backgroundFields legend {
+  padding: 0 var(--space-2);
+  font-weight: 700;
+}
+
+.backgroundUpload {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-3);
+}
+
+.backgroundUpload img {
+  width: min(100%, 28rem);
+  aspect-ratio: 16 / 7;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+}
+
+.fileInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
+.colorFields {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: var(--space-4);
+}
+
+.colorFields label:not(.gradientToggle) {
+  display: grid;
+  gap: var(--space-2);
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: var(--text-sm);
+}
+
+.colorFields input[type='color'] {
+  width: 5rem;
+  height: 3rem;
+  padding: 0.2rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  cursor: pointer;
+}
+
+.gradientToggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 3rem;
+}
+
+.gradientToggle input {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--color-accent);
+}
+
+.inlineEditor {
+  display: grid;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-sunk);
+}
+
+.inviteRow {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.inviteTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.inviteTitle {
+  font-weight: 650;
+}
+
+.link {
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface-sunk);
+  font-size: var(--text-sm);
+  overflow-wrap: anywhere;
+}
+
+.qr {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+}
+
+.qr img {
+  width: 11rem;
+  height: 11rem;
+  padding: var(--space-2);
+  border-radius: var(--radius-sm);
+  background: #fff; /* o QR Code precisa de fundo claro para ser lido, em qualquer tema */
+  image-rendering: pixelated;
+}
+
+/* ---------- Página de convite ---------- */
+
+.inviteLoading,
+.inviteErrorPage {
+  display: grid;
+  min-height: 100dvh;
+  place-items: center;
+  padding: var(--space-5);
+  background: var(--color-bg);
+  color: var(--color-text-muted);
+}
+
+.publicInvitePage {
+  position: relative;
+  min-height: 100dvh;
+  isolation: isolate;
+  color: var(--color-text);
+}
+
+.inviteBackdrop {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  background: rgb(5 18 21 / 0.38);
+  backdrop-filter: blur(1.5px);
+}
+
+.publicInviteTop {
+  display: flex;
+  justify-content: center;
+  padding: max(var(--space-5), env(safe-area-inset-top)) var(--gutter) var(--space-4);
+}
+
+.publicInviteTop a {
+  display: inline-flex;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+  background: rgb(255 255 255 / 0.9);
+  box-shadow: var(--shadow-raised);
+}
+
+.publicInviteMain {
+  display: grid;
+  gap: var(--space-6);
+  width: min(100% - 2 * var(--gutter), 46rem);
+  margin: 0 auto;
+  padding: var(--space-4) 0 var(--space-8);
+}
+
+.publicInviteCard,
+.inviteMap {
+  border: 1px solid rgb(255 255 255 / 0.42);
+  border-radius: clamp(1rem, 4vw, 2rem);
+  background: color-mix(in srgb, var(--color-surface) 94%, transparent);
+  box-shadow: 0 1.5rem 5rem rgb(0 0 0 / 0.24);
+  backdrop-filter: blur(14px);
+}
+
+.publicInviteCard {
+  display: grid;
+  gap: var(--space-5);
+  padding: clamp(var(--space-5), 6vw, var(--space-8));
+  text-align: center;
+}
+
+.publicInviteCard .inviteEyebrow {
+  margin: 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.publicInviteTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 8vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.04;
+  overflow-wrap: anywhere;
+}
+
+.publicInviteBody,
+.publicInviteFooter {
+  max-width: 36rem;
+  margin: 0 auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.publicInviteBody {
+  font-size: var(--text-md);
+  line-height: 1.65;
+}
+
+.inviteEventDetails {
+  display: grid;
+  gap: var(--space-1);
+  padding: var(--space-4) 0;
+  border-block: 1px solid var(--color-divider);
+}
+
+.inviteEventDetails h2 {
+  margin: 0;
+  font-size: var(--text-md);
+}
+
+.inviteValidity {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.publicInviteFooter {
+  width: 100%;
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-divider);
+  color: var(--color-text-muted);
+}
+
+.responseButtons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+}
+
+.responseButtons > * {
+  width: 100%;
+}
+
+.inviteMap {
+  overflow: hidden;
+}
+
+.mapHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5);
+}
+
+.mapHeading span {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.mapHeading h2 {
+  margin: var(--space-1) 0 0;
+  font-size: var(--text-md);
+  overflow-wrap: anywhere;
+}
+
+.mapHeading a {
+  flex: none;
+}
+
+.inviteMap iframe {
+  display: block;
+  width: 100%;
+  height: min(55vh, 25rem);
+  border: 0;
+}
+
+@media (max-width: 34rem) {
+  .responseButtons {
+    grid-template-columns: 1fr;
+  }
+
+  .mapHeading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+.invite {
+  display: grid;
+  gap: var(--space-5);
+  max-width: 34rem;
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-raised);
+}
+
+.inviteHead {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.inviteEyebrow {
+  color: var(--color-accent-text);
+  font-weight: 650;
+  font-size: var(--text-sm);
+}
+
+.inviteName {
+  font-size: var(--text-lg);
+  overflow-wrap: anywhere;
+}
+
+.inviteActions {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.inviteActionLoading {
+  padding: var(--space-4);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.attendanceQuestion {
+  display: grid;
+  gap: var(--space-3);
+  min-width: 0;
+  margin: 0;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-sunk);
+}
+
+.attendanceQuestion legend {
+  padding: 0 var(--space-1);
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.attendanceChoices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-2);
+}
+
+.attendanceChoices label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 3rem;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color var(--duration) var(--ease-out), background var(--duration) var(--ease-out);
+}
+
+.attendanceChoices label:has(input:focus-visible) {
+  outline: 3px solid var(--color-field-glow);
+  outline-offset: 2px;
+}
+
+.attendanceChoices input {
+  accent-color: var(--color-accent);
+}
+
+.attendanceChoices .attendanceSelected {
+  border-color: var(--color-selected-border);
+  background: var(--color-accent-soft);
+}
+
+.attendanceHint {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+@media (max-width: 32rem) {
+  .attendanceChoices {
+    grid-template-columns: 1fr;
+  }
+}
